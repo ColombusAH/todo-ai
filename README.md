@@ -55,3 +55,7 @@ for config (dotenv) , pg with type orm and pino logger
 2. Add the `pino logger
 
 3. create todos resource via the cli
+
+4. implement repo pattern.
+
+5. wrap into modules.
