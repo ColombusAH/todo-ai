@@ -47,7 +47,9 @@ for config (dotenv) , pg with type orm and pino logger
 
 @nestjs/config @nestjs/typeorm typeorm pg nestjs-pino joi.
 
-### First step
+### First step together
 
 1. create a database module and load the env vars.
 ```npx nest g module database```
+
+2. Add the `pino logger
