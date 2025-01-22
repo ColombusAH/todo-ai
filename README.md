@@ -42,3 +42,11 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+### Dependencies
+for config (dotenv) and pg with type orm
+
+@nestjs/config @nestjs/typeorm typeorm pg.
+
+### first step
+
+1. create a database module and load the env vars.
