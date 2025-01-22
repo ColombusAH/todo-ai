@@ -43,10 +43,11 @@ $ npm run test:cov
 ```
 
 ### Dependencies
-for config (dotenv) and pg with type orm
+for config (dotenv) , pg with type orm and pino logger
 
-@nestjs/config @nestjs/typeorm typeorm pg.
+@nestjs/config @nestjs/typeorm typeorm pg nestjs-pino joi.
 
-### first step
+### First step
 
 1. create a database module and load the env vars.
+```npx nest g module database```
