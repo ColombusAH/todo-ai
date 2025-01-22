@@ -1,15 +1,25 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { LoggerModule } from 'nestjs-pino';
+import { TodosModule } from './todos/todos.module';
+import { ConfigModule } from '@nestjs/config';
+import * as Joi from 'joi';
 
 @Module({
-  imports: [DatabaseModule, LoggerModule.forRoot({
-    pinoHttp: {
-      transport:
-        process.env.NODE_ENV !== 'production'
-          ? {
+  imports: [DatabaseModule, TodosModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validationSchema: Joi.object({
+        DATABASE_URL: Joi.string().required(),
+        PORT: Joi.number(),
+        DB_SYNC: Joi.boolean().required(),
+      }),
+    }),
+    LoggerModule.forRoot({
+      pinoHttp: {
+        transport:
+          process.env.NODE_ENV !== 'production'
+            ? {
               target: 'pino-pretty', // Use pretty print in development
               options: {
                 colorize: true,
@@ -17,10 +27,8 @@ import { LoggerModule } from 'nestjs-pino';
                 ignore: 'pid,hostname',
               },
             }
-          : undefined,
-    },
-  }),],
-  controllers: [AppController],
-  providers: [AppService],
+            : undefined,
+      },
+    })],
 })
-export class AppModule {}
+export class AppModule { }

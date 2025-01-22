@@ -53,3 +53,5 @@ for config (dotenv) , pg with type orm and pino logger
 ```npx nest g module database```
 
 2. Add the `pino logger
+
+3. create todos resource via the cli
